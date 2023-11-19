@@ -2,7 +2,7 @@
 """Endpoint (route) will be to return the status of your API"""
 import os
 from flask import Flask
-from views import app_views
+from api.v1.views import app_views
 
 app = Flask(__name__)
 
