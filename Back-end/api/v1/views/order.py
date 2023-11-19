@@ -19,7 +19,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 @app_views.route("/orders", strict_slashes=False, methods=["GET"])
-def user(order_id=None):
+def order(order_id=None):
     """show order and order with id"""
     cat_list = {}
     if order_id is None:

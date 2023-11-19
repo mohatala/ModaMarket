@@ -19,7 +19,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 @app_views.route("/product_photo", strict_slashes=False, methods=["GET"])
-def user(product_photo_id=None):
+def product_photo(product_photo_id=None):
     """show product_photo and product_photo with id"""
     cat_list = {}
     if product_photo_id is None:

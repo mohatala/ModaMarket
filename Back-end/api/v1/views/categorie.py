@@ -19,7 +19,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 @app_views.route("/categories", strict_slashes=False, methods=["GET"])
-def user(categorie_id=None):
+def categorie(categorie_id=None):
     """show categorie and categorie with id"""
     cat_list = {}
     if categorie_id is None:

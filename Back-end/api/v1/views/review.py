@@ -19,7 +19,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 @app_views.route("/reviews", strict_slashes=False, methods=["GET"])
-def user(review_id=None):
+def review(review_id=None):
     """show review and review with id"""
     cat_list = {}
     if review_id is None:
