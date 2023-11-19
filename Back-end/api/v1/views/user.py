@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Authors : Talaini
 State objects that handles all default RESTFul API actions"""
-from views import app_views
+from api.v1.views import app_views
 #from models.categorie import Categorie
 from flask import abort, request, jsonify
 import mysql.connector
