@@ -23,19 +23,18 @@ def user(user_id=None):
     """show user and user with id"""
     user_list = {}
     if request.method == 'GET':
-        email = request.form['email']
         if user_id is None:
             mycursor.execute("SELECT * FROM User")
             myresult = mycursor.fetchall()
             #for k,v in myresult:
                 #user_list[k]=v
-            return email
+            return jsonify(myresult)
     else:
         """create a new post req"""
-        #data = request.get_json(force=True, silent=True)
-        email = request.form['email']
-        password = request.form['password']
-        """if not data:
+        data = request.get_json(force=True, silent=True)
+        #email = request.form['email']
+        #password = request.form['password']
+        if not data:
             abort(400, "Not a JSON")
         if "email" not in data:
             abort(400, "Missing email")
@@ -44,9 +43,9 @@ def user(user_id=None):
         sql = "INSERT INTO User (id_user, first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s, %s,%s, %s, %s, %s,%s, %s)"
         val = (data["id_user"], data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
         mycursor.execute(sql, val)
-        mydb.commit()"""
-        print(email)
-        return email, 201
+        mydb.commit()
+        #print(email)
+        return "ok", 201
 
 
 @app_views.route("/login", strict_slashes=False, methods=["POST"])
