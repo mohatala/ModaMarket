@@ -29,7 +29,7 @@ def user(user_id=None):
             #user_list[k]=v
         return jsonify(myresult)
 
-@app_views.route("/users", strict_slashes=False, methods=["POST"])
+@app_views.route("/cusers", strict_slashes=False, methods=["POST"])
 def create_user():
     """create a new post req"""
     data = request.get_json(force=True, silent=True)
