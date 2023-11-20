@@ -21,13 +21,13 @@ mycursor = mydb.cursor()
 @app_views.route("/users", strict_slashes=False, methods=["GET"])
 def user(user_id=None):
     """show user and user with id"""
-    cat_list = {}
+    user_list = {}
     if user_id is None:
         mycursor.execute("SELECT * FROM User")
         myresult = mycursor.fetchall()
         for k,v in myresult:
-            cat_list[k]=v
-        return jsonify(cat_list)
+            user_list[k]=v
+        return jsonify(user_list)
 
 @app_views.route("/users", strict_slashes=False, methods=["POST"])
 def create_user():
@@ -54,7 +54,7 @@ def login():
         abort(400, "Missing email")
     if "password" not in data:
         abort(400, "Missing password")
-    user_list = []
+    user_list = {}
     mycursor.execute("SELECT * FROM User where email=%s and password=%s", data['email'], data['password'])
     myresult = mycursor.fetchall()
     for k,v in myresult:
