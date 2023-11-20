@@ -29,7 +29,7 @@ def user(user_id=None):
             myresult = mycursor.fetchall()
             #for k,v in myresult:
                 #user_list[k]=v
-        return jsonify(email)
+            return email
     else:
         """create a new post req"""
         #data = request.get_json(force=True, silent=True)
