@@ -23,12 +23,13 @@ def user(user_id=None):
     """show user and user with id"""
     user_list = {}
     if request.method == 'GET':
+        email = request.form['email']
         if user_id is None:
             mycursor.execute("SELECT * FROM User")
             myresult = mycursor.fetchall()
             #for k,v in myresult:
                 #user_list[k]=v
-            return jsonify(myresult)
+        return jsonify(email)
     else:
         """create a new post req"""
         #data = request.get_json(force=True, silent=True)
