@@ -25,9 +25,9 @@ def user(user_id=None):
     if user_id is None:
         mycursor.execute("SELECT * FROM User")
         myresult = mycursor.fetchall()
-        for k,v in myresult:
-            user_list[k]=v
-        return jsonify(user_list)
+        #for k,v in myresult:
+            #user_list[k]=v
+        return jsonify(myresult)
 
 @app_views.route("/users", strict_slashes=False, methods=["POST"])
 def create_user():
