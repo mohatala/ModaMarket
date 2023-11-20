@@ -31,7 +31,9 @@ def user(user_id=None):
             return jsonify(myresult)
     else:
         """create a new post req"""
-        data = request.get_json(force=True, silent=True)
+        #data = request.get_json(force=True, silent=True)
+        email = request.form['email']
+        password = request.form['password']
         """if not data:
             abort(400, "Not a JSON")
         if "email" not in data:
@@ -42,8 +44,8 @@ def user(user_id=None):
         val = (data["id_user"], data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
         mycursor.execute(sql, val)
         mydb.commit()"""
-        print("hello")
-        return data, 201
+        print(email)
+        return email, 201
 
 
 @app_views.route("/login", strict_slashes=False, methods=["POST"])
