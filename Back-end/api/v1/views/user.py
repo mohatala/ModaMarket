@@ -43,6 +43,7 @@ def create_user():
     val = (data["id_user"], data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
     mycursor.execute(sql, val)
     mydb.commit()"""
+    print("hello")
     return data, 201
 
 @app_views.route("/login", strict_slashes=False, methods=["POST"])
