@@ -16,7 +16,7 @@ mydb = mysql.connector.connect(
   database='moda_market'
 )
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(dictionary=True)
 
 @app_views.route("/users", strict_slashes=False, methods=["GET"])
 def user(user_id=None):
