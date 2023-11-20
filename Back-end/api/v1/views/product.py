@@ -25,7 +25,6 @@ def product(product_id=None):
     if product_id is None:
         mycursor.execute("SELECT * FROM Product")
         myresult = mycursor.fetchall()
-        mydb.close()
         for k,v in myresult:
             cat_list[k]=v
         return jsonify(cat_list)

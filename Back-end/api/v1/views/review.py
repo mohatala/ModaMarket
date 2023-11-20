@@ -25,7 +25,6 @@ def review(review_id=None):
     if review_id is None:
         mycursor.execute("SELECT * FROM Review")
         myresult = mycursor.fetchall()
-        mydb.close()
         for k,v in myresult:
             cat_list[k]=v
         return jsonify(cat_list)

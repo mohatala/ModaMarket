@@ -25,10 +25,41 @@ def user(user_id=None):
     if user_id is None:
         mycursor.execute("SELECT * FROM User")
         myresult = mycursor.fetchall()
-        mydb.close()
         for k,v in myresult:
             cat_list[k]=v
         return jsonify(cat_list)
+
+@app_views.route("/users", strict_slashes=False, methods=["POST"])
+def create_user():
+    """create a new post req"""
+    data = request.get_json(force=True, silent=True)
+    if not data:
+        abort(400, "Not a JSON")
+    if "email" not in data:
+        abort(400, "Missing email")
+    if "password" not in data:
+        abort(400, "Missing password")
+    sql = "INSERT INTO User (id_user, first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s, %s,%s, %s, %s, %s,%s, %s)"
+    val = (data["id_user"], data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
+    mycursor.execute(sql, val)
+    mydb.commit()
+    return "ok", 201
+
+@app_views.route("/login", strict_slashes=False, methods=["POST"])
+def login():
+    data = request.get_json(force=True, silent=True)
+    if not data:
+        abort(400, "Not a JSON")
+    if "email" not in data:
+        abort(400, "Missing email")
+    if "password" not in data:
+        abort(400, "Missing password")
+    user_list = []
+    mycursor.execute("SELECT * FROM User where email=%s and password=%s", data['email'], data['password'])
+    myresult = mycursor.fetchall()
+    for k,v in myresult:
+        user_list[k]=v
+    return jsonify(user_list), 201
 
 #if __name__ == '__main__':
     #app.run(host='0.0.0.0', port='5000')

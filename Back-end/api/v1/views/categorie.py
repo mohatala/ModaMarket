@@ -25,7 +25,6 @@ def categorie(categorie_id=None):
     if categorie_id is None:
         mycursor.execute("SELECT * FROM Categorie")
         myresult = mycursor.fetchall()
-        mydb.close()
         for k,v in myresult:
             cat_list[k]=v
         return jsonify(cat_list)
