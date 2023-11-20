@@ -33,7 +33,7 @@ def user(user_id=None):
 def create_user():
     """create a new post req"""
     data = request.get_json(force=True, silent=True)
-    if not data:
+    """if not data:
         abort(400, "Not a JSON")
     if "email" not in data:
         abort(400, "Missing email")
@@ -42,8 +42,8 @@ def create_user():
     sql = "INSERT INTO User (id_user, first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s, %s,%s, %s, %s, %s,%s, %s)"
     val = (data["id_user"], data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
     mycursor.execute(sql, val)
-    mydb.commit()
-    return "ok", 201
+    mydb.commit()"""
+    return data, 201
 
 @app_views.route("/login", strict_slashes=False, methods=["POST"])
 def login():
