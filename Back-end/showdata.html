@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        /* Your styles here */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>User List</h1>
+
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- User data will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch JSON data from the API
+        fetch('https://www.talaini.tech/api/v1/users')
+            .then(response => response.json())
+            .then(data => {
+                // Call function to populate the table with JSON data
+                populateTable(data);
+            })
+            .catch(error => console.error('Error:', error));
+
+        // Function to populate the table with JSON data
+        function populateTable(users) {
+            var tableBody = document.querySelector('#userTable tbody');
+
+            // Loop through each user in the JSON data
+            users.forEach(user => {
+                var row = tableBody.insertRow();
+                row.insertCell(0).textContent = user.id_User;
+                row.insertCell(1).textContent = user.first_name_User;
+                row.insertCell(2).textContent = user.last_name_User;
+                row.insertCell(3).textContent = user.dateofbirth_User;
+                row.insertCell(4).textContent = user.phone;
+                row.insertCell(5).textContent = user.email;
+                row.insertCell(6).textContent = user.adresse;
+            });
+        }
+    </script>
+</body>
+</html>

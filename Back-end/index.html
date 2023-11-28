@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form id="userForm">
+        <label for="id_user">User ID:</label>
+        <input type="text" id="id_user" name="id_user" required>
+
+        <label for="first_name_user">First Name:</label>
+        <input type="text" id="first_name_User" name="first_name_User" required>
+
+        <label for="last_name_user">Last Name:</label>
+        <input type="text" id="last_name_User" name="last_name_User" required>
+
+        <label for="dateofbirth_user">Date of Birth:</label>
+        <input type="date" id="dateofbirth_User" name="dateofbirth_User" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="adresse" name="adresse" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="createUser()">Create User</button>
+    </form>
+    <script>
+        function createUser() {
+            // Get form data
+            var formData = {
+                id_user: document.getElementById('id_user').value,
+                first_name_User: document.getElementById('first_name_User').value,
+                last_name_User: document.getElementById('last_name_User').value,
+                dateofbirth_User: document.getElementById('dateofbirth_User').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                adresse: document.getElementById('adresse').value,
+                password: document.getElementById('password').value
+            };
+
+            // Send JSON POST request
+            fetch('https://www.talaini.tech/api/v1/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the server (if needed)
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

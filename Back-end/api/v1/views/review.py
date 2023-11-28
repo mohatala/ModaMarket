@@ -16,18 +16,15 @@ mydb = mysql.connector.connect(
   database='moda_market'
 )
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(dictionary=True)
 
 @app_views.route("/reviews", strict_slashes=False, methods=["GET"])
 def review(review_id=None):
     """show review and review with id"""
-    cat_list = {}
     if review_id is None:
         mycursor.execute("SELECT * FROM Review")
         myresult = mycursor.fetchall()
-        for k,v in myresult:
-            cat_list[k]=v
-        return jsonify(cat_list)
+        return jsonify(myresult)
 
 #if __name__ == '__main__':
     #app.run(host='0.0.0.0', port='5000')
