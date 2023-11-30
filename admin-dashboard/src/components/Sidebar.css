@@ -21,7 +21,7 @@
   height: 4%;
 }
 .logo > span > span {
-  color: var(--pink);
+  color: var(--red);
 }
 
 .logo > img {

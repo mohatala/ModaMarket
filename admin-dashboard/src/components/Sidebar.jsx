@@ -18,6 +18,13 @@ const Sidebar = () => {
       left : '-60%'
     }
   }
+  const logOut = () => {
+	const isAuth = localStorage.getItem('isAuth');
+	if(isAuth){
+		localStorage.removeItem('isAuth');
+		window.location.reload();
+	}
+  }
   console.log(window.innerWidth)
   return (
     <>
@@ -50,7 +57,8 @@ const Sidebar = () => {
         })}
         {/* signoutIcon */}
         <div className="menuItem">
-          <UilSignOutAlt />
+		  <UilSignOutAlt />
+		  <span onClick={logOut}>Log Out</span>
         </div>
       </div>
     </motion.div>

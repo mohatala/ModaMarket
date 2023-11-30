@@ -1,18 +1,17 @@
-import './App.css'
-import MainDash from './components/MainDash/MainDash';
-import RightSide from './components/RigtSide/RightSide';
-import Sidebar from './components/Sidebar';
+import './App.css';
+import React from 'react';
+import Login from './Login';
+import Home from './Home';
 
-function App() {
+const App = () => {
+  const isAuthenticated = localStorage.getItem('isAuth');
+  console.log(isAuthenticated);
+
   return (
-    <div className="App">
-      <div className="AppGlass">
-        <Sidebar/>
-        <MainDash/>
-        <RightSide/>
-      </div>
-    </div>
+    <div className='App'>
+	  {isAuthenticated ? <Home /> : <Login />}
+	</div>
   );
-}
+};
 
 export default App;
