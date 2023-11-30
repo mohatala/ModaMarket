@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import React from 'react'
+import { Link } from "react-router-dom"
 
-const Navigation = () => {
+const Navigation = ({ CartItem }) => {
   const navigate = useNavigate();
 
   const handleButtonClick1 = () => {
@@ -25,8 +26,13 @@ const Navigation = () => {
         <li onClick={handleButtonClick}>About</li>
         <li onClick={handleButtonClick}>Contact</li>
       </ul>
-      
 
+      <div className='cart'>
+        <Link to='/cart'>
+          <i className='fa fa-shopping-bag icon-circle'></i>
+          <span>{CartItem.length === 0 ? "" : CartItem.length}</span>
+        </Link>
+      </div>
       <button className="btn" onClick={handleButtonClick1}>Login now!</button>
     </nav>
   );
