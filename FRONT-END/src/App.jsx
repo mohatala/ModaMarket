@@ -4,6 +4,9 @@ import "./App.css";
 import Footer from "./components/Footer";
 import HeroSection from "./components/Hero";
 import Productsection from "./components/Products";
+import Locationsection from "./components/Location"
+import Aboutsection from "./components/About"
+import Contactsection from "./components/Contact"
 import Navigation from "./components/Navigation";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -46,6 +49,9 @@ export default function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} />}/>
+        <Route path="/location"  element={<Locationsection CartItem={CartItem} />}/>
+        <Route path="/about"  element={<Aboutsection CartItem={CartItem} />}/>
+        <Route path="/contact"  element={<Contactsection CartItem={CartItem} />}/>
 
          {/* <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} /> */}

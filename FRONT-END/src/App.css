@@ -239,3 +239,82 @@ footer li {
   opacity: 1;
 }
 /*---------product-----------*/
+
+/*----------Location ----------------*/
+.location h1 {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.location .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+#map {
+    height: 400px;
+    margin-bottom: 20px;
+}
+.gmap_canvas{overflow: hidden;background: none !important;height: 400px;width: 100%;}
+.mapouter{position: relative;text-align: right;height: 560px;width: 820px;}
+
+/*************about ***************/
+.about .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+.about-section {
+            text-align: center;
+        }
+
+
+
+.about-text {
+            line-height: 1.6;
+        }
+/***************contact***************/
+
+.contact .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+.contact form {
+            display: grid;
+            gap: 20px;
+        }
+
+.contact label {
+            font-weight: bold;
+        }
+
+.contact input, textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+.contact button {
+            background-color: red;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
