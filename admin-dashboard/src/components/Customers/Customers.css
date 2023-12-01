@@ -1,0 +1,21 @@
+.Customers{
+    /* padding-top: 1rem; */
+    display: flex;
+    flex-direction: column;
+}
+.Customers > h1{
+	margin-top: 3rem;
+}
+@media screen and (max-width: 1200px) {
+    .Customers{
+        justify-content:flex-start;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px)
+{
+    .Customers{
+        align-items: center;
+    }
+}
