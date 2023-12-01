@@ -13,9 +13,9 @@ function createData(name, trackingId, date, status) {
 }
 
 const rows = [
-  createData("Maticha", 18908424, "2 March 2022", "Approved"),
-  createData("lbanan", 18908424, "2 March 2022", "Pending"),
-  createData("batata", 18908424, "2 March 2022", "Delivered"),
+  createData("Women's Plus Size Hooded Puffer Coat, Created for Macy's", 18908424, "2 oct 2023", "Approved"),
+  createData("Women's Raglan-Sleeve Mock-Neck Sweatshirt", 18908424, "5 dec 2022", "Pending"),
+  createData("Women's Long-Sleeve Faux-Wrap Midi Dress", 18908424, "20 jan 2022", "Delivered"),
 ];
 
 

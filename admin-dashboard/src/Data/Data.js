@@ -98,20 +98,20 @@ export const cardsData = [
 export const UpdatesData = [
   {
     img: img1,
-    name: "Aloo aloo",
-    noti: "has ordered maticha",
+    name: "Client 1",
+    noti: "has ordered Women's Cashmere Blend Belted Wrap Coat",
     time: "25 seconds ago",
   },
   {
     img: img2,
-    name: "Kifach l9alb",
-    noti: "has received lbanan",
+    name: "Client 2",
+    noti: "Women's Essentials Embroidered Hooded Fleece Sweatshirt",
     time: "30 minutes ago",
   },
   {
     img: img3,
-    name: "Wlh m3rft",
-    noti: "has ordered batata",
+    name: "Client 3",
+    noti: "has ordered Women's Long-Sleeve Faux-Wrap Midi Dress",
     time: "2 hours ago",
   },
 ];
