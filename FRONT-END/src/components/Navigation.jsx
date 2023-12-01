@@ -5,6 +5,9 @@ import { Link } from "react-router-dom"
 const Navigation = ({ CartItem }) => {
   const navigate = useNavigate();
 
+  const home_btn = () => {
+    navigate("/");
+  };
   const login_btn = () => {
     navigate("/login");
   };
@@ -22,7 +25,7 @@ const Navigation = ({ CartItem }) => {
   };
   return (
     <nav className="container">
-      <div className="logo">
+      <div className="logo" onClick={home_btn}>
       <span>M</span>oda.<span className="sp2">Market</span>
         {/* <img    src="/images/brand_logo.png" alt="logo" style={{ maxWidth: '100%', height: 'auto' }} /> */}
       </div>
