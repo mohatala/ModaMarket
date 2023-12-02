@@ -85,11 +85,6 @@ const Products = () => {
       method: "DELETE",
     })
       .then(response => response.json())
-      .then(() => {
-        setProducts(values => {
-          return values.filter(item => item.id !== id)
-        })
-      })
     handleCloseDialog();
   };
 
