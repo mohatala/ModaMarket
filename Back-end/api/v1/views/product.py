@@ -19,7 +19,6 @@ mydb = mysql.connector.connect(
 
 
 @app_views.route("/products", strict_slashes=False, methods=['GET', 'POST'])
-@app_views.route('/products/<product_id>', methods=['DELETE'],strict_slashes=False)
 def product(product_id=None):
     """show Product and Product with id"""
     if request.method == 'GET':
@@ -29,7 +28,7 @@ def product(product_id=None):
           myresult = mycursor.fetchall()
           mycursor.close()
           return jsonify(myresult)
-    elif request.method == 'POST':
+    else:
         """create a new post req"""
         mycursor = mydb.cursor(dictionary=True)
         data = request.get_json(force=True, silent=True)
@@ -43,16 +42,18 @@ def product(product_id=None):
         mycursor.close()
         #print(email)
         return "ok", 201
-    else:
-        if product_id is not None:
-            mycursor = mydb.cursor(dictionary=True)
-            sql = "DELETE FROM Product WHERE id_product =%s"
-            val = (product_id)
-            mycursor.execute(sql, val)
-            mydb.commit()
-            mycursor.close()
-            return "DELETE OK", 201
         
+        
+@app_views.route('/products/<product_id>', methods=['DELETE'],strict_slashes=False)
+def del_product(product_id=None):
+  if product_id is not None:
+    mycursor = mydb.cursor(dictionary=True)
+    sql = "DELETE FROM Product WHERE id_product =%s"
+    val = (product_id)
+    mycursor.execute(sql, val)
+    mydb.commit()
+    mycursor.close()
+    return "DELETE OK", 201
 
 #if __name__ == '__main__':
     #app_views.run(host='0.0.0.0', port='5000')
