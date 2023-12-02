@@ -14,6 +14,7 @@ import {
   DialogActions,
   Button,
   TextField,
+  ImageField,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -31,6 +32,36 @@ const Products = () => {
     createData("Product B", "Category B", "$150"),
     createData("Product C", "Category C", "$120"),
   ]);*/
+  const { REACT_APP_REST } = process.env;
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleFile = event => {
+      setSelectedImage(
+          URL.createObjectURL(event.target.files[0])
+      );
+
+      const formData = new FormData();
+      formData.append("upload1", event.target.files[0]);
+
+      fetch("https://localhost:3000/public/uploads", {
+          method: 'POST',
+          mode: 'cors',
+          body: formData,
+          // dataType is not a valid option for the Fetch API, remove this line
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Upload failed');
+          }
+          // Handle successful response (if needed)
+          console.log('Upload successful');
+          return response.json(); // if your server responds with JSON
+      })
+      .catch(error => {
+          // Handle errors here
+          console.error('There was a problem with the upload:', error);
+      });
+  };
+
   const url = "https://www.talaini.tech/api/v1/products";
     const [products, setProducts] = useState([]);
 
@@ -92,7 +123,10 @@ const Products = () => {
           return response.json(); // This line will throw an error if the response body is empty
         })
     .then(data => {
-          console.log(data);
+          //console.log(data);
+          if (data[1]==201){
+            window.location.reload(false);
+          }
         })
     .catch(error => {
           // Handle errors here
@@ -176,7 +210,15 @@ const Products = () => {
             onChange={(e) => setNewProduct({ ...newProduct, price_product: e.target.value })}
             fullWidth
           />
-        </DialogContent>
+                <label>Upload Image</label>
+                <img src={selectedImage} />
+                <input
+                  type="file"
+                  name="myImage"
+                  onChange={handleFile}
+                />
+
+              </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Cancel</Button>
           {selectedProduct ? (
