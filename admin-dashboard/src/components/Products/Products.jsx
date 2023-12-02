@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import {
   Table,
   TableContainer,
@@ -21,47 +21,75 @@ import AddIcon from "@mui/icons-material/Add";
 import "../Table/Table.css";
 
 // Function to create product data
-function createData(name, category, price) {
-  return { name, category, price };
+function createData(name_Product, id_Categorie, price_product) {
+  return { name_Product, id_Categorie, price_product };
 }
 
 const Products = () => {
-  const [products, setProducts] = useState([
+  /*const [products, setProducts] = useState([
     createData("Product A", "Category A", "$100"),
     createData("Product B", "Category B", "$150"),
     createData("Product C", "Category C", "$120"),
-  ]);
+  ]);*/
+  const url = "https://www.talaini.tech/api/v1/products";
+    const [products, setProducts] = useState([]);
 
+    const fetchInfo = () => {
+      return fetch(url)
+        .then((res) => res.json())
+        .then((d) => setProducts(d))
+    }
+
+
+    useEffect(() => {
+      fetchInfo();
+    }, []);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
-  const [newProduct, setNewProduct] = useState({ name: "", category: "", price: "" });
+  const [newProduct, setNewProduct] = useState({ id_Product:0, name_Product: "", id_Categorie: "", price_product: "" });
 
   const handleOpenDialog = (product) => {
     setSelectedProduct(product);
-    setNewProduct(product || { name: "", category: "", price: "" });
+    setNewProduct(product || { name_Product: "", id_Categorie: "", price_product: "" });
     setOpenDialog(true);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setSelectedProduct(null);
-    setNewProduct({ name: "", category: "", price: "" });
+    setNewProduct({ id_Product:0, name_Product: "", id_Categorie: "", price_product: "" });
   };
 
   const handleAddProduct = () => {
     setProducts((prevProducts) => [...prevProducts, newProduct]);
+    // Send data to the backend via POST
+    fetch('https://www.talaini.tech/api/v1/products', {
+
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(newProduct)
+    })
     handleCloseDialog();
   };
 
   const handleUpdateProduct = () => {
     setProducts((prevProducts) =>
-      prevProducts.map((product) => (product.name === selectedProduct.name ? newProduct : product))
+      prevProducts.map((product) => (product.name_Product === selectedProduct.name_Product ? newProduct : product))
     );
     handleCloseDialog();
   };
 
-  const handleDeleteProduct = () => {
-    setProducts((prevProducts) => prevProducts.filter((product) => product.name !== selectedProduct.name));
+  const handleDeleteProduct = (id) => {
+    setProducts((prevProducts) => prevProducts.filter((product) => product.id_Product !== selectedProduct.id_Product));
+    fetch('https://www.talaini.tech/api/v1/products/'+id, {
+      method: "DELETE",
+    })
+      .then(response => response.json())
+      .then(() => {
+        setProducts(values => {
+          return values.filter(item => item.id !== id)
+        })
+      })
     handleCloseDialog();
   };
 
@@ -90,19 +118,19 @@ const Products = () => {
             <TableBody style={{ color: "white" }}>
               {products.map((product) => (
                 <TableRow
-                  key={product.name}
+                  key={product.id_Product}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {product.name}
+                    {product.name_Product}
                   </TableCell>
-                  <TableCell align="left">{product.category}</TableCell>
-                  <TableCell align="left">{product.price}</TableCell>
+                  <TableCell align="left">{product.id_Categorie}</TableCell>
+                  <TableCell align="left">{product.price_product}</TableCell>
                   <TableCell align="left">
                     <IconButton color="primary" onClick={() => handleOpenDialog(product)}>
                       <EditIcon />
                     </IconButton>
-                    <IconButton color="secondary" onClick={() => handleDeleteProduct(product)}>
+                    <IconButton color="secondary" onClick={() => handleDeleteProduct(product.id_Product)}>
                       <DeleteIcon />
                     </IconButton>
                   </TableCell>
@@ -116,22 +144,28 @@ const Products = () => {
       <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogTitle>{selectedProduct ? "Edit Product" : "Add New Product"}</DialogTitle>
         <DialogContent>
+        <TextField
+          label="Product id"
+          value={newProduct.id_Product}
+          onChange={(e) => setNewProduct({ ...newProduct, id_Product: e.target.value })}
+          fullWidth
+        />
           <TextField
             label="Product Name"
-            value={newProduct.name}
-            onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
+            value={newProduct.name_Product}
+            onChange={(e) => setNewProduct({ ...newProduct, name_Product: e.target.value })}
             fullWidth
           />
           <TextField
             label="Category"
-            value={newProduct.category}
-            onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}
+            value={newProduct.id_Categorie}
+            onChange={(e) => setNewProduct({ ...newProduct, id_Categorie: e.target.value })}
             fullWidth
           />
           <TextField
             label="Price"
-            value={newProduct.price}
-            onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
+            value={newProduct.price_product}
+            onChange={(e) => setNewProduct({ ...newProduct, price_product: e.target.value })}
             fullWidth
           />
         </DialogContent>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -53,7 +53,19 @@ const Customers = () => {
     );
     handleCloseDialog();
   };
+  const url = "https://www.talaini.tech/api/v1/users";
+    const [data, setData] = useState([]);
 
+    const fetchInfo = () => {
+      return fetch(url)
+        .then((res) => res.json())
+        .then((d) => setData(d))
+    }
+
+
+    useEffect(() => {
+      fetchInfo();
+    }, []);
   return (
     <div className="Customers">
       <h1>Customers</h1>
@@ -69,13 +81,13 @@ const Customers = () => {
               </TableRow>
             </TableHead>
             <TableBody style={{ color: "white" }}>
-              {customers.map((customer) => (
+              {data.map((customer) => (
                 <TableRow
-                  key={customer.name}
+                  key={customer.first_name_User}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {customer.name}
+                    {customer.first_name_User}
                   </TableCell>
                   <TableCell align="left">{customer.email}</TableCell>
                   <TableCell align="left">{customer.phone}</TableCell>
