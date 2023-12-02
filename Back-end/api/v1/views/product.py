@@ -41,7 +41,7 @@ def product(product_id=None):
         mydb.commit()
         mycursor.close()
         #print(email)
-        return "ok", 201
+        return jsonify("ok", 201)
         
         
 @app_views.route('/products/<product_id>', methods=['DELETE'],strict_slashes=False)
@@ -53,7 +53,7 @@ def del_product(product_id=None):
     mycursor.execute(sql)
     mydb.commit()
     mycursor.close()
-    return "DELETE OK", 201
+    return jsonify("DELETE OK", 201)
 
 #if __name__ == '__main__':
     #app_views.run(host='0.0.0.0', port='5000')

@@ -83,8 +83,21 @@ const Products = () => {
     setProducts((prevProducts) => prevProducts.filter((product) => product.id_Product !== selectedProduct.id_Product));
     fetch('https://www.talaini.tech/api/v1/products/'+id, {
       method: "DELETE",
+      mode: 'cors',
     })
-      .then(response => response.json())
+    .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // This line will throw an error if the response body is empty
+        })
+    .then(data => {
+          console.log(data);
+        })
+    .catch(error => {
+          // Handle errors here
+          console.error('There was a problem with the fetch operation:', error);
+        });
     handleCloseDialog();
   };
 
