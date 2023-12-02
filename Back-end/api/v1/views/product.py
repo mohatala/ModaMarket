@@ -48,9 +48,9 @@ def product(product_id=None):
 def del_product(product_id=None):
   if product_id is not None:
     mycursor = mydb.cursor(dictionary=True)
-    sql = "DELETE FROM Product WHERE id_product =".product_id
-    #val = (product_id)
-    mycursor.execute(sql)
+    sql = "DELETE FROM Product WHERE id_product =%d"
+    val = [product_id]
+    mycursor.execute(sql, val)
     mydb.commit()
     mycursor.close()
     return "DELETE OK", 201
