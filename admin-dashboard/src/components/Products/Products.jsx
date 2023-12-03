@@ -32,7 +32,6 @@ const Products = () => {
     createData("Product B", "Category B", "$150"),
     createData("Product C", "Category C", "$120"),
   ]);*/
-  const { REACT_APP_REST } = process.env;
   const [selectedImage, setSelectedImage] = useState(null);
   const handleFile = event => {
       setSelectedImage(
@@ -42,7 +41,7 @@ const Products = () => {
       const formData = new FormData();
       formData.append("upload1", event.target.files[0]);
 
-      fetch("https://localhost:3000/public/uploads", {
+      fetch("https://www.talaini.tech/api/", {
           method: 'POST',
           mode: 'cors',
           body: formData,

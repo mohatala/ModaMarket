@@ -318,3 +318,8 @@ footer li {
             border-radius: 5px;
             cursor: pointer;
         }
+
+/*************Compte admin***********/
+.compte .leftmenu{float: left;width: 30%;background-color:#fff; margin-top: 250px;}
+.cmpcontent{background-color: #fff;width: 65%;margin-left: 35%;padding: 20px; height: 250px;}
+.compte .leftmenu a {color: black;display: block;padding: 12px;margin-bottom: 2px;}

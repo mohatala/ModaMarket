@@ -9,10 +9,26 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   // prodcut qty total
   return (
     <>
+
     <div><Navigation CartItem={CartItem}/> </div>
       <section className='cart-items'>
         <div className='container d_flex'>
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
+          <div className='cart-order'>
+          <h1>Order Now</h1>
+          <label>Name</label><br/>
+          <label>Email</label><br/>
+          <label>Tel</label><br/>
+          <label>Adresse</label><br/>
+          <button>Confirm Order </button>
+          <div className='cart-total product'>
+            <h2>Cart Summary</h2>
+            <div className=' d_flex'>
+              <h4>Total Price :</h4>
+              <h3>${totalPrice}.00</h3>
+            </div>
+          </div>
+          </div>
 
           <div className='cart-details'>
             {CartItem.length === 0 && <h1 className='no-items product'>No Items are add in Cart</h1>}
@@ -58,13 +74,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
             })}
           </div>
 
-          <div className='cart-total product'>
-            <h2>Cart Summary</h2>
-            <div className=' d_flex'>
-              <h4>Total Price :</h4>
-              <h3>${totalPrice}.00</h3>
-            </div>
-          </div>
         </div>
       </section>
     </>

@@ -12,9 +12,13 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login"
 import Signup from "./components/Signup";
+import Compte from "./components/Compte";
 import Cart from "./components/Cart/Cart"
 import Data from "./components/Data"
-
+import Infos from "./components/cmp/Infos"
+import CmdDetailsComponent from "./components/cmp/Details_cmd"
+import CommandeComponent from "./components/cmp/Vos_commandes"
+import ChangePasswordComponent from "./components/cmp/newpass"
 
 export default function App() {
   const { productItems } = Data.productItems
@@ -48,10 +52,16 @@ export default function App() {
         <Route path="/footer" element={<Footer />}/>
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
+        <Route path="/compte" element={<Compte CartItem={CartItem}/>} />
         <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} />}/>
         <Route path="/location"  element={<Locationsection CartItem={CartItem} />}/>
         <Route path="/about"  element={<Aboutsection CartItem={CartItem} />}/>
         <Route path="/contact"  element={<Contactsection CartItem={CartItem} />}/>
+        <Route path="/infos" element={<Infos CartItem={CartItem}/>} />
+        <Route path="/dcmd" element={<CmdDetailsComponent CartItem={CartItem}/>} />
+        <Route path="/orders" element={<CommandeComponent CartItem={CartItem}/>} />
+        <Route path="/npass" element={<ChangePasswordComponent CartItem={CartItem}/>} />
+
 
          {/* <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} /> */}

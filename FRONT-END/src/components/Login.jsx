@@ -29,19 +29,19 @@ export default function Login() {
           </div>
          <div className="login-button-m">
          <button>Login</button>
+         <a href="/infos">compte</a>
          </div>
-          
+
            <p className="link">
              <a href="/signup">Forgot password ?</a> Or<a href="/signup">Sign Up</a>
            </p>
-          
+
 
         </div>
       </div>
-      
+
 
     </div>
    </div></div>
   )
 }
-

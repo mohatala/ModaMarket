@@ -42,6 +42,7 @@ const Navigation = ({ CartItem }) => {
           <span>{CartItem.length === 0 ? "" : CartItem.length}</span>
         </Link>
       </div>
+  
       <button className="btn" onClick={login_btn}>Login now!</button>
     </nav>
   );
