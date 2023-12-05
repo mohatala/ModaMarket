@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './Login.css';
 import profile from "./../assets/a.png";
 import email from "./../assets/email.jpg";
 import pass from "./../assets/pass.png";
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('https://www.talaini.tech/api/v1/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        // Successful login, handle the response as needed
+        console.log('Login successful!');
+      } else {
+        // Handle login failure
+        console.error('Login failed');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
+  };
   return (
     <div><div className="main-m">
     <div className="sub-main">
@@ -28,7 +52,7 @@ export default function Login() {
             <input type="password" placeholder="user name" className="name"/>
           </div>
          <div className="login-button-m">
-         <button>Login</button>
+         <button onClick={handleLogin}>Login</button>
          <a href="/infos">compte</a>
          </div>
 

@@ -58,7 +58,7 @@ def login():
     if "password" not in data:
         abort(400, "Missing password")
     user_list = {}
-    mycursor.execute("SELECT * FROM User where email=%s and password=%s", data['email'], data['password'])
+    mycursor.execute("SELECT * FROM User WHERE email=%s AND password=%s", ( data['email'], data['password']))
     myresult = mycursor.fetchall()
     #for k,v in myresult:
         #user_list[k]=v
