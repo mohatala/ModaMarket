@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom';
 
 import './Login.css';
 import profile from "./../assets/a.png";
 import email from "./../assets/email.jpg";
 import pass from "./../assets/pass.png";
 export default function Signup() {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     adresse: '',
     dateofbirth_User: '',
@@ -33,6 +35,7 @@ export default function Signup() {
         },
         body: JSON.stringify(userData),
       });
+      navigate('/login');
 
     } catch (error) {
       console.error('Error during login:', error);

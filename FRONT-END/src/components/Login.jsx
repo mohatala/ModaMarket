@@ -1,26 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect  } from 'react'
+import {useNavigate} from 'react-router-dom';
 
 import './Login.css';
 import profile from "./../assets/a.png";
 import email from "./../assets/email.jpg";
 import pass from "./../assets/pass.png";
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [userlogin, setUserData] = useState({
+    email: '',
+    password: '',
+  });
+  const navigate = useNavigate();
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [name]: value,
+    }));
+  };
   const handleLogin = async () => {
     try {
+      console.log({ userlogin });
       const response = await fetch('https://www.talaini.tech/api/v1/login', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ userlogin }),
       });
 
       if (response.ok) {
         // Successful login, handle the response as needed
-        console.log('Login successful!');
+        //navigate('/');
+
+        console.log('Login successful!', response);
       } else {
         // Handle login failure
         console.error('Login failed');
@@ -45,11 +60,11 @@ export default function Login() {
           <h1>Login Page</h1>
           <div>
             <img src={email} alt="email" className="email"/>
-            <input type="text" placeholder="user name" className="name"/>
+            <input type="email" placeholder="Email" name="email" onChange={handleChange} className="name"/>
           </div>
           <div className="second-input">
             <img src={pass} alt="pass" className="email"/>
-            <input type="password" placeholder="user name" className="name"/>
+            <input type="password" placeholder="password"  name="password" onChange={handleChange} className="name"/>
           </div>
          <div className="login-button-m">
          <button onClick={handleLogin}>Login</button>
