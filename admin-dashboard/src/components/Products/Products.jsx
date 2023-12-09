@@ -215,7 +215,7 @@ const Products = () => {
                 <input
                   type="file"
                   name="myImage"
-                  onChange={handleFile ,(e) => setNewProduct({ ...newProduct, image: e.target.value })}
+                  onChange={handleFile ,(e) => setNewProduct({ ...newProduct, image: e.target.files[0].name })}
                 />
 
               </DialogContent>
