@@ -35,7 +35,7 @@ def product(product_id=None):
         if not data:
             abort(400, "Not a JSON")
 
-        sql = "INSERT INTO Product (name_Product, price_product,image,discount ,categorie) VALUES (%s, %s,%s, %s)"
+        sql = "INSERT INTO Product (name_Product, price_product,image,discount ,categorie) VALUES (%s, %s,%s, %s, %s)"
         val = (data["name_Product"], data["price_product"],data["image"],data["discount"], data["categorie"])
         mycursor.execute(sql, val)
         mydb.commit()
