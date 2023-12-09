@@ -29,13 +29,13 @@ const Productsection = ({ CartItem, addToCart }) => {
     <main className="shop background">
       <div className="product-content  grid1">
 
-      {productItems.map((productItems) => {
+      {products.map((productItems) => {
         return (
           <div className='box'>
             <div className='product mtop'>
               <div className='img'>
                 <span className='discount'>{productItems.discount}% Off</span>
-                <img src={productItems.cover} alt='' />
+                <img src={"./images/flash/"+productItems.image} alt='' />
                 <div className='product-like'>
                   <label>{count}</label> <br />
                   <i className='fa-regular fa-heart' onClick={increment}></i>

@@ -76,22 +76,22 @@ const Products = () => {
     }, []);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
-  const [newProduct, setNewProduct] = useState({ name_Product: "", Categorie: "", price_product: "", discount: "", image: "" });
+  const [newProduct, setNewProduct] = useState({ name_Product: "", categorie: "", price_product: "", discount: "", image: "" });
 
   const handleOpenDialog = (product) => {
     setSelectedProduct(product);
-    setNewProduct(product || { name_Product: "", Categorie: "", price_product: "", discount: "", image: "" });
+    setNewProduct(product || { name_Product: "", categorie: "", price_product: "", discount: "", image: "" });
     setOpenDialog(true);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setSelectedProduct(null);
-    setNewProduct({name_Product: "", Categorie: "", price_product: "", discount: "", image: "" });
+    setNewProduct({name_Product: "", categorie: "", price_product: "", discount: "", image: "" });
   };
 
   const handleAddProduct = () => {
-    setNewProduct({ ...newProduct, image: selectedImage })
+    console.log(newProduct);
     setProducts((prevProducts) => [...prevProducts, newProduct]);
     // Send data to the backend via POST
     fetch('https://www.talaini.tech/api/v1/products', {
@@ -166,7 +166,7 @@ const Products = () => {
                   <TableCell component="th" scope="row">
                     {product.name_Product}
                   </TableCell>
-                  <TableCell align="left">{product.Categorie}</TableCell>
+                  <TableCell align="left">{product.categorie}</TableCell>
                   <TableCell align="left">{product.price_product}</TableCell>
                   <TableCell align="left">
                     <IconButton color="primary" onClick={() => handleOpenDialog(product)}>
@@ -195,7 +195,7 @@ const Products = () => {
           <TextField
             label="Category"
             value={newProduct.Categorie}
-            onChange={(e) => setNewProduct({ ...newProduct, Categorie: e.target.value })}
+            onChange={(e) => setNewProduct({ ...newProduct, categorie: e.target.value })}
             fullWidth
           />
           <TextField
@@ -215,7 +215,7 @@ const Products = () => {
                 <input
                   type="file"
                   name="myImage"
-                  onChange={handleFile}
+                  onChange={handleFile ,(e) => setNewProduct({ ...newProduct, image: e.target.value })}
                 />
 
               </DialogContent>
