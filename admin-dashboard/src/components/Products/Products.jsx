@@ -76,21 +76,22 @@ const Products = () => {
     }, []);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
-  const [newProduct, setNewProduct] = useState({ id_Product:0, name_Product: "", id_Categorie: "", price_product: "" });
+  const [newProduct, setNewProduct] = useState({ name_Product: "", Categorie: "", price_product: "", discount: "", image: "" });
 
   const handleOpenDialog = (product) => {
     setSelectedProduct(product);
-    setNewProduct(product || { name_Product: "", id_Categorie: "", price_product: "" });
+    setNewProduct(product || { name_Product: "", Categorie: "", price_product: "", discount: "", image: "" });
     setOpenDialog(true);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setSelectedProduct(null);
-    setNewProduct({ id_Product:0, name_Product: "", id_Categorie: "", price_product: "" });
+    setNewProduct({name_Product: "", Categorie: "", price_product: "", discount: "", image: "" });
   };
 
   const handleAddProduct = () => {
+    setNewProduct({ ...newProduct, image: selectedImage })
     setProducts((prevProducts) => [...prevProducts, newProduct]);
     // Send data to the backend via POST
     fetch('https://www.talaini.tech/api/v1/products', {
@@ -104,7 +105,7 @@ const Products = () => {
 
   const handleUpdateProduct = () => {
     setProducts((prevProducts) =>
-      prevProducts.map((product) => (product.name_Product === selectedProduct.name_Product ? newProduct : product))
+      prevProducts.map((product) => (product.id_Product === selectedProduct.id_Product ? newProduct : product))
     );
     handleCloseDialog();
   };
@@ -165,7 +166,7 @@ const Products = () => {
                   <TableCell component="th" scope="row">
                     {product.name_Product}
                   </TableCell>
-                  <TableCell align="left">{product.id_Categorie}</TableCell>
+                  <TableCell align="left">{product.Categorie}</TableCell>
                   <TableCell align="left">{product.price_product}</TableCell>
                   <TableCell align="left">
                     <IconButton color="primary" onClick={() => handleOpenDialog(product)}>
@@ -185,12 +186,6 @@ const Products = () => {
       <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogTitle>{selectedProduct ? "Edit Product" : "Add New Product"}</DialogTitle>
         <DialogContent>
-        <TextField
-          label="Product id"
-          value={newProduct.id_Product}
-          onChange={(e) => setNewProduct({ ...newProduct, id_Product: e.target.value })}
-          fullWidth
-        />
           <TextField
             label="Product Name"
             value={newProduct.name_Product}
@@ -199,8 +194,14 @@ const Products = () => {
           />
           <TextField
             label="Category"
-            value={newProduct.id_Categorie}
-            onChange={(e) => setNewProduct({ ...newProduct, id_Categorie: e.target.value })}
+            value={newProduct.Categorie}
+            onChange={(e) => setNewProduct({ ...newProduct, Categorie: e.target.value })}
+            fullWidth
+          />
+          <TextField
+            label="Discount"
+            value={newProduct.discount}
+            onChange={(e) => setNewProduct({ ...newProduct, discount: e.target.value })}
             fullWidth
           />
           <TextField
