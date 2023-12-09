@@ -13,7 +13,7 @@ mydb = mysql.connector.connect(
   host="54.89.109.168",
   user="med",
   password='med123',
-  database='moda_market'
+  database='market'
 )
 
 mycursor = mydb.cursor(dictionary=True)
@@ -22,7 +22,7 @@ mycursor = mydb.cursor(dictionary=True)
 def order(order_id=None):
     """show order and order with id"""
     if order_id is None:
-        mycursor.execute("SELECT * FROM Order")
+        mycursor.execute("SELECT * FROM Orders")
         myresult = mycursor.fetchall()
         return jsonify(myresult)
 

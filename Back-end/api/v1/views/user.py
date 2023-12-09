@@ -13,7 +13,7 @@ mydb = mysql.connector.connect(
   host="54.89.109.168",
   user="med",
   password='med123',
-  database='moda_market'
+  database='market'
 )
 
 mycursor = mydb.cursor(dictionary=True)

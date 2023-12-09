@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import Navigation from "./Navigation";
 import Data from "./Data"
 import "./style.css"
-//const productItems = Data.productItems
+const productItems = Data.productItems
 
 const Productsection = ({ CartItem, addToCart }) => {
   const [count, setCount] = useState(0)
@@ -29,7 +29,7 @@ const Productsection = ({ CartItem, addToCart }) => {
     <main className="shop background">
       <div className="product-content  grid1">
 
-      {products.map((productItems) => {
+      {productItems.map((productItems) => {
         return (
           <div className='box'>
             <div className='product mtop'>
