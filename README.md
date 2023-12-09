@@ -32,18 +32,18 @@ CONSTRAINT `FK_6` FOREIGN KEY `FK_2` (`id_User`) REFERENCES `User` (`id_User`)
 
 -- ************************************** `Order`
 
-CREATE TABLE `Order`
-(
- `id_order`   integer NOT NULL AUTO_INCREMENT ,
- `id_Product` integer NOT NULL ,
- `id_User`    integer NOT NULL ,
-
-PRIMARY KEY (`id_order`),
-KEY `FK_1` (`id_Product`),
-CONSTRAINT `FK_1` FOREIGN KEY `FK_1` (`id_Product`) REFERENCES `Product` (`id_Product`),
-KEY `FK_2` (`id_User`),
-CONSTRAINT `FK_2` FOREIGN KEY `FK_2` (`id_User`) REFERENCES `User` (`id_User`)
+CREATE TABLE Order (
+  id_order INTEGER NOT NULL AUTO_INCREMENT,
+  id_Product INTEGER NOT NULL,
+  id_User INTEGER NOT NULL,
+  
+  PRIMARY KEY (id_order),
+  KEY FK_1 (id_Product),
+  CONSTRAINT FK_1 FOREIGN KEY (id_Product) REFERENCES Product (id_Product),
+  KEY FK_2 (id_User),
+  CONSTRAINT FK_2 FOREIGN KEY (id_User) REFERENCES User (id_User)
 );
+
 
 
 -- ************************************** `User`
