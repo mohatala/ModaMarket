@@ -16,7 +16,7 @@ mydb = mysql.connector.connect(
   database='market'
 )
 
-mycursor = mydb.cursor(dictionary=True)
+mycursor = mydb.cursor(buffered=True,dictionary=True)
 
 @app_views.route("/orders", strict_slashes=False, methods=['GET', 'POST'])
 def order(order_id=None):
@@ -38,7 +38,7 @@ def order(order_id=None):
         mydb.commit()
         val=(data["email"],data["last_name_User"])
         mycursor.execute("SELECT id_User FROM User where email=%s and last_name_User=%s",val)
-        myresult =mycursor.fetchone()
+        myresult =mycursor.fetchone()[0]
         id_user_int=0
         if myresult:
           id_user = myresult["id_User"]  # Extract the value from the result
