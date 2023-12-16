@@ -39,6 +39,7 @@ def order(order_id=None):
         val=(data["email"],data["last_name_User"])
         mycursor.execute("SELECT id_User FROM User where email=%s and last_name_User=%s",val)
         myresult =mycursor.fetchone()
+        id_user_int=0
         if myresult:
           id_user = myresult["id_User"]  # Extract the value from the result
           id_user_int = int(id_user)  # Convert to an integer if needed
