@@ -38,17 +38,22 @@ def order(order_id=None):
             abort(400, "Missing email")
         if "password" not in data:
             abort(400, "Missing password")
-        l={}
+        
+        sql = "INSERT INTO User (first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s,%s, %s, %s, %s,%s, %s)"
+        val = (data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
+        mycursor.execute(sql, val)
+        mydb.commit()
+        val=(data["email"],data["last_name_User"])
+        mycursor.execute("SELECT id_User FROM User where email=%s and last_name_User=%s",val)
+        myresult = mycursor.fetchall()
+        print(myresult)
         for key in data.keys():
           #value = d[key]
           if len(key)<3:
             print(data[key]["categorie"])
+
           
-        """sql = "INSERT INTO User (first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s,%s, %s, %s, %s,%s, %s)"
-        val = (data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
-        mycursor.execute(sql, val)
-        mydb.commit()
-        print(data["0"])"""
+        
         return "ok", 201
 
 
