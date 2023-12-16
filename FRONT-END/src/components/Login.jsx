@@ -31,18 +31,19 @@ export default function Login() {
         body: JSON.stringify({ userlogin }),
       });
 
-      if (response.ok) {
-        // Successful login, handle the response as needed
-        //navigate('/');
-
-        console.log('Login successful!', response);
-      } else {
-        // Handle login failure
-        console.error('Login failed',response);
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-    }
+          if (response.ok) {
+         // Successful login, handle the response as needed
+         const data = await response.json();
+         console.log('Login successful!', data);
+         // Do something with the data, e.g., navigate to another page
+         // navigate('/');
+       } else {
+         // Handle login failure
+         console.error('Login failed', response.status, response.statusText);
+       }
+     } catch (error) {
+       console.error('Error during login:', error);
+     }
   };
   return (
     <div><div className="main-m">

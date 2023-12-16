@@ -60,9 +60,14 @@ def login():
     user_list = {}
     mycursor.execute("SELECT * FROM User WHERE email=%s AND password=%s", ( data["userlogin"]['email'], data["userlogin"]['password']))
     myresult = mycursor.fetchall()
-    #for k,v in myresult:
-        #user_list[k]=v
-    return jsonify(myresult), 200
+    if myresult:
+        # Successful login
+        # You can extract specific fields from the result if needed
+        user_data = {"user_id": myresult[0]["user_id"], "email": myresult[0]["email"]}
+        return jsonify({"message": "ok", "user": user_data}), 200
+    else:
+        # Login failed
+        return jsonify({"message": "Invalid credentials"}), 401
 
 #if __name__ == '__main__':
     #app.run(host='0.0.0.0', port='5000')
