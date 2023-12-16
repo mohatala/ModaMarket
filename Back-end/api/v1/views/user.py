@@ -54,7 +54,7 @@ def login():
     if not data:
         abort(400, "Not a JSON test")
     if "email" not in data:
-        abort(400, data["userlogin"])
+        abort(400, data["userlogin"]["email"])
     if "password" not in data:
         abort(400, data)
     user_list = {}
