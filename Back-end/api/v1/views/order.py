@@ -44,7 +44,7 @@ def order(order_id=None):
           #value = d[key]
           if len(key)<3:
             #print(data[key]["categorie"])
-            sql = "INSERT INTO Orders (id_Product, id_User, qty) VALUES (%s,%s, %s, %s, %s,%s, %s)"
+            sql = "INSERT INTO Orders (id_Product, id_User, qty) VALUES (%s,%s, %s)"
             val = (data[key]["id_Product"], myresult, data[key]["qty"])
             mycursor.execute(sql, val)
             mydb.commit()
