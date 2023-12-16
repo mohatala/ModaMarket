@@ -9,7 +9,7 @@ const Navigation = ({ CartItem }) => {
     navigate("/");
   };
   const login_btn = () => {
-    navigate("/login");
+    navigate("/products");
   };
   const location_btn = () => {
     navigate("/location");
@@ -30,7 +30,6 @@ const Navigation = ({ CartItem }) => {
         {/* <img    src="/images/brand_logo.png" alt="logo" style={{ maxWidth: '100%', height: 'auto' }} /> */}
       </div>
       <ul>
-        <li onClick={menu_btn}>Shop</li>
         <li onClick={location_btn}>Location</li>
         <li onClick={about_btn}>About</li>
         <li onClick={contact_btn}>Contact</li>
@@ -43,7 +42,7 @@ const Navigation = ({ CartItem }) => {
         </Link>
       </div>
 
-      <button className="btn" onClick={login_btn}>Login now!</button>
+      <button className="btn" onClick={login_btn}>Shop now!</button>
     </nav>
   );
 };

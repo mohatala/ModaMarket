@@ -16,6 +16,7 @@ export default function Signup({ CartItem }) {
     last_name_User: '',
     phone: '',
   });
+  const [confirmationVisible, setConfirmationVisible] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +40,8 @@ export default function Signup({ CartItem }) {
         body: JSON.stringify(Object.assign(userData, CartItem)),
       });
       //navigate('/login');
-
+      // Show the confirmation message
+            setConfirmationVisible(true);
     } catch (error) {
       console.error('Error during login:', error);
     }
@@ -65,6 +67,12 @@ export default function Signup({ CartItem }) {
           <button type="button" onClick={handleSignup}>
             Comfirm Order
           </button>
+          {/* Confirmation message */}
+           {confirmationVisible && (
+             <div className="confirmation-message">
+               <h2>Your order is confirmed, We will Call you for further Informations, Thank You.</h2>
+             </div>
+           )}
   </div>
     </div>
    </div>
