@@ -54,9 +54,9 @@ def login():
     if not data:
         abort(400, "Not a JSON test")
     if "email" not in data:
-        abort(400, "Missing email test")
+        abort(400, data)
     if "password" not in data:
-        abort(400, "Missing password test")
+        abort(400, data)
     user_list = {}
     mycursor.execute("SELECT * FROM User WHERE email=%s AND password=%s", ( data['email'], data['password']))
     myresult = mycursor.fetchall()
