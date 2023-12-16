@@ -32,8 +32,7 @@ def order(order_id=None):
     else:
         """create a new post req"""
         data = request.get_json(force=True, silent=True)
-        abort(data)
-        """if not data:
+        if not data:
             abort(400, "Not a JSON")
         if "email" not in data:
             abort(400, "Missing email")
@@ -44,7 +43,7 @@ def order(order_id=None):
         mycursor.execute(sql, val)
         mydb.commit()
         #print(email)
-        return "ok", 201"""
+        return "ok", 201
 
 
 #if __name__ == '__main__':
