@@ -4,7 +4,7 @@ import Navigation from "../Navigation";
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   // Stpe: 7   calucate total of items
-  const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0)
+  const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price_product, 0)
 
   // prodcut qty total
   return (
@@ -35,17 +35,17 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
 
             {/* yasma hami le cart item lai display garaaxa */}
             {CartItem.map((item) => {
-              const productQty = item.price * item.qty
+              const productQty = item.price_product * item.qty
 
               return (
                 <div className='cart-list product d_flex' key={item.id}>
                   <div className='img'>
-                    <img src={item.cover} alt='' />
+                    <img src={"./images/flash/"+item.image} alt='' />
                   </div>
                   <div className='cart-details'>
-                    <h3>{item.name}</h3>
+                    <h3>{item.name_Product}</h3>
                     <h4>
-                      ${item.price}.00 * {item.qty}
+                      ${item.price_product}.00 * {item.qty}
                       <span>${productQty}.00</span>
                     </h4>
                   </div>
