@@ -22,7 +22,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       console.log({ userlogin });
-      const response = await fetch('https://www.talaini.tech/api/v1/login', {
+      const response = await fetch('https://www.talaini.tech/api/v1/users/login', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
