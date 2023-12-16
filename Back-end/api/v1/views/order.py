@@ -41,7 +41,7 @@ def order(order_id=None):
         l={}
         for key in data.keys():
           #value = d[key]
-          if isinstance(key, int):
+          if isinstance(key, str):
             print(key)
           
         """sql = "INSERT INTO User (first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s,%s, %s, %s, %s,%s, %s)"
