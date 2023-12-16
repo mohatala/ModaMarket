@@ -14,7 +14,6 @@ export default function Signup({ CartItem }) {
     email: '',
     first_name_User: '',
     last_name_User: '',
-    password: '',
     phone: '',
   });
 
@@ -57,8 +56,6 @@ export default function Signup({ CartItem }) {
           <input type="text" name="last_name_User" value={userData.last_name_User} onChange={handleChange} /> <br/> <br/>
           <label>Email:</label>
           <input type="email" name="email" value={userData.email} onChange={handleChange} /> <br/> <br/>
-          <label>Password:</label>
-          <input type="password" name="password" value={userData.password} onChange={handleChange} /> <br/> <br/>
           <label>Phone:</label>
           <input type="text" name="phone" value={userData.phone} onChange={handleChange} /> <br/> <br/>
           <label>Address:</label>

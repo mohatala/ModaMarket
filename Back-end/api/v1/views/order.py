@@ -31,14 +31,7 @@ def order(order_id=None):
             return jsonify(myresult)
     else:
         """create a new post req"""
-        data = request.get_json(force=True, silent=True)
-        if not data:
-            abort(400, "Not a JSON")
-        if "email" not in data:
-            abort(400, "Missing email")
-        if "password" not in data:
-            abort(400, "Missing password")
-        
+        data = request.get_json(force=True, silent=True)   
         sql = "INSERT INTO User (first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s,%s, %s, %s, %s,%s, %s)"
         val = (data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], "test")
         mycursor.execute(sql, val)
