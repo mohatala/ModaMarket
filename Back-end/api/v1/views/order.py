@@ -42,7 +42,7 @@ def order(order_id=None):
         val = (data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
         mycursor.execute(sql, val)
         mydb.commit()
-        #print(email)
+        print(data["first_name_User"])
         return "ok", 201
 
 
