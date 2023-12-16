@@ -51,7 +51,7 @@ def order(order_id=None):
           if len(key)<3:
             #print(data[key]["categorie"])
             sql = "INSERT INTO Orders (id_Product, id_User, qty) VALUES (%s,%s, %s)"
-            val = (int(data[key]["id_Product"]), id_user_int, int(data[key]["qty"]))
+            val = (int(data[key]["id_Product"]), 26, int(data[key]["qty"]))
             mycursor.execute(sql, val)
             mydb.commit()
         return "ok", 201
