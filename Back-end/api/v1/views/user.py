@@ -53,12 +53,12 @@ def login():
     data = request.get_json(force=True, silent=True)
     if not data:
         abort(400, "Not a JSON test")
-    if "email" not in data:
-        abort(400, data)
-    if "password" not in data:
+    if data[0] not in data:
+        abort(400, data[0])
+    if data[1] not in data:
         abort(400, data)
     user_list = {}
-    mycursor.execute("SELECT * FROM User WHERE email=%s AND password=%s", ( data['email'], data['password']))
+    mycursor.execute("SELECT * FROM User WHERE email=%s AND password=%s", ( data[0], data[1]))
     myresult = mycursor.fetchall()
     #for k,v in myresult:
         #user_list[k]=v
