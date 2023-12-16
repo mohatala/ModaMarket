@@ -8,7 +8,6 @@ import mysql.connector
 #from flask import Flask
 
 #app = Flask(__name__)
-
 mydb = mysql.connector.connect(
   host="54.89.109.168",
   user="med",

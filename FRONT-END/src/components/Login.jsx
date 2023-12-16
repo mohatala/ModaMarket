@@ -31,19 +31,27 @@ export default function Login() {
         body: JSON.stringify({ userlogin }),
       });
 
-          if (response.ok) {
-         // Successful login, handle the response as needed
-         const data = await response.json();
-         console.log('Login successful!', data);
-         // Do something with the data, e.g., navigate to another page
-         // navigate('/');
-       } else {
-         // Handle login failure
-         console.error('Login failed', response.status, response.statusText);
-       }
-     } catch (error) {
-       console.error('Error during login:', error);
-     }
+      if (response.ok) {
+          // Successful login, handle the response as needed
+          const data = await response.json();
+          console.log('Login successful!', data);
+
+          // Check if the login message is "ok"
+          if (data.message === 'ok') {
+            // Do something with the user data, e.g., navigate to another page
+            // const userId = data.user.user_id;
+            // navigate(`/user/${userId}`);
+          } else {
+            // Handle other success cases or unexpected response
+            console.error('Unexpected response:', data);
+          }
+      } else {
+          // Handle login failure
+          console.error('Login failed', response.status, response.statusText);
+        }
+      } catch (error) {
+        console.error('Error during login:', error);
+        }
   };
   return (
     <div><div className="main-m">
