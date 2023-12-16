@@ -53,8 +53,8 @@ def login():
     data = request.get_json(force=True, silent=True)
     if not data:
         abort(400, "Not a JSON test")
-    if data[0] not in data:
-        abort(400, data[0])
+    if data[1][0] not in data:
+        abort(400, data[1])
     if data[1] not in data:
         abort(400, data)
     user_list = {}
