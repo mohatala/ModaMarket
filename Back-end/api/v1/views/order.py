@@ -42,7 +42,7 @@ def order(order_id=None):
         id_user_int=0
         for i in myresult:
            id_user_int=i
-        print(id_user_int)
+        print(id_user_int[0])
         for key in data.keys():
           #value = d[key]
           if len(key)<3:
