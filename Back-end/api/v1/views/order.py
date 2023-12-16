@@ -39,8 +39,9 @@ def order(order_id=None):
         if "password" not in data:
             abort(400, "Missing password")
         l={}
-        for k,v in data:
-            print(k)
+        for key in data.keys():
+          #value = d[key]
+          print(key)
           
         """sql = "INSERT INTO User (first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s,%s, %s, %s, %s,%s, %s)"
         val = (data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
