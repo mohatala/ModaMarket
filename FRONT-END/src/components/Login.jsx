@@ -31,7 +31,7 @@ export default function Login() {
         body: JSON.stringify({ userlogin }),
       });
 
-      if (response) {
+      if (response.ok) {
           // Successful login, handle the response as needed
           const data = await response.json();
           console.log('Login successful!', data);

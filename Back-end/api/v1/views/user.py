@@ -49,24 +49,27 @@ def user(user_id=None):
 
 @app_views.route("/users/login", strict_slashes=False, methods=["POST"])
 def login():
-    data = request.get_json(force=True, silent=True)
-    if not data:
-        abort(400, "Not a JSON")
-    if "email" not in data["userlogin"]:
-        abort(400, "Missing email")
-    if "password" not in data["userlogin"]:
-        abort(400, "Missing password")
-    user_list = {}
-    mycursor.execute("SELECT * FROM User WHERE email=%s AND password=%s", ( data["userlogin"]['email'], data["userlogin"]['password']))
-    myresult = mycursor.fetchall()
-    if myresult:
-        # Successful login
-        # You can extract specific fields from the result if needed
-        user_data = {"user_id": myresult[0]["id_User"], "email": myresult[0]["email"]}
-        return jsonify({"message": "ok", "user": user_data}), 200
-    else:
-        # Login failed
-        return jsonify({"message": "Invalid credentials"}), 401
+    try:
+        data = request.get_json()
+        if not data or "email" not in data or "password" not in data:
+            abort(400, "Invalid request data")
+
+        # Replace this query with your actual database query
+        query = "SELECT * FROM User WHERE email=%s AND password=%s"
+        mycursor.execute(query, (data["email"], data["password"]))
+        user = mycursor.fetchone()
+
+        if user:
+            # Successful login
+            response_data = {"status": "ok", "user": user}
+            return jsonify(response_data), 200
+        else:
+            # Login failed
+            response_data = {"status": "error", "message": "Invalid credentials"}
+            return jsonify(response_data), 401
+    except Exception as e:
+        print(e)
+        abort(500, "Internal server error")
 
 #if __name__ == '__main__':
     #app.run(host='0.0.0.0', port='5000')
