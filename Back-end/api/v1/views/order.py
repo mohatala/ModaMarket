@@ -39,8 +39,7 @@ def order(order_id=None):
         val=(data["email"],data["last_name_User"])
         mycursor.execute("SELECT id_User FROM User where email=%s and last_name_User=%s",val)
         myresult = mycursor.fetchall()
-        #print(myresult)
-        v=myresult[0]
+        print(int(myresult))
         for key in data.keys():
           #value = d[key]
           if len(key)<3:
