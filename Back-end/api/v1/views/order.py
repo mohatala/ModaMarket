@@ -42,7 +42,7 @@ def order(order_id=None):
         for key in data.keys():
           #value = d[key]
           if len(key)<3:
-            print(key)
+            print(data[key]["categorie"])
           
         """sql = "INSERT INTO User (first_name_User, last_name_User, dateofbirth_User, phone, email, adresse, password ) VALUES (%s,%s, %s, %s, %s,%s, %s)"
         val = (data["first_name_User"], data["last_name_User"], data["dateofbirth_User"], data["phone"], data["email"], data["adresse"], data["password"])
