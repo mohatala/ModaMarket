@@ -40,12 +40,9 @@ def order(order_id=None):
         mycursor.execute("SELECT id_User FROM User where email=%s and last_name_User=%s",val)
         myresult =mycursor.fetchall()
         id_user_int=0
-        if myresult:
-          id_user = myresult["id_User"]  # Extract the value from the result
-          id_user_int = int(id_user)  # Convert to an integer if needed
-          #print("ID User:", id_user_int)
-        else:
-          print("User not found")
+        for i in myresult:
+           id_user_int=i
+        print(id_user_int)
         for key in data.keys():
           #value = d[key]
           if len(key)<3:
