@@ -7,8 +7,8 @@ import email from "./../assets/email.jpg";
 import pass from "./../assets/pass.png";
 export default function Login() {
   const [userlogin, setUserData] = useState({
-    "email": '',
-    "password": '',
+    'email': '',
+    'password': '',
   });
   const navigate = useNavigate();
 
