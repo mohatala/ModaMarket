@@ -48,7 +48,7 @@ def user(user_id=None):
         return "ok", 201
 
 
-@app_views.route("/login", strict_slashes=False, methods=["POST"])
+@app_views.route("/users/login", strict_slashes=False, methods=["POST"])
 def login():
     data = request.get_json(force=True, silent=True)
     if not data:

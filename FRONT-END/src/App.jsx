@@ -61,14 +61,8 @@ export default function App() {
         <Route path="/dcmd" element={<CmdDetailsComponent CartItem={CartItem}/>} />
         <Route path="/orders" element={<CommandeComponent CartItem={CartItem}/>} />
         <Route path="/npass" element={<ChangePasswordComponent CartItem={CartItem}/>} />
-
-
-         {/* <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
-
       </Routes>
       <Footer />
-
     </BrowserRouter>
   );
 }

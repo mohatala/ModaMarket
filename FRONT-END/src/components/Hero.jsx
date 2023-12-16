@@ -18,7 +18,6 @@ const HeroSection = ({ CartItem }) => {
 
         <div className="hero-btn">
           <button ><a href="/products" className="shop-btn"> Shop Now</a></button>
-          <button className="secondary-btn">Category</button>
         </div>
 
         <div className="shopping">
