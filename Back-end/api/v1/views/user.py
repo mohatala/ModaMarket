@@ -62,7 +62,7 @@ def login():
     myresult = mycursor.fetchall()
     #for k,v in myresult:
         #user_list[k]=v
-    return jsonify(myresult), 201
+    return jsonify(myresult), 200
 
 #if __name__ == '__main__':
     #app.run(host='0.0.0.0', port='5000')
