@@ -30,9 +30,8 @@ export default function Login() {
         },
         body: JSON.stringify({ userlogin }),
       });
-      const data = await response.json();
-      console.log('API Response:', data);
-      if (response.ok) {
+
+      if (response) {
           // Successful login, handle the response as needed
           const data = await response.json();
           console.log('Login successful!', data);

@@ -63,7 +63,7 @@ def login():
         # Successful login
         # You can extract specific fields from the result if needed
         user_data = {"user_id": myresult[0]["id_User"], "email": myresult[0]["email"]}
-        return 'ok'
+        return jsonify({"message": "ok", "user": user_data}), 200
     else:
         # Login failed
         return jsonify({"message": "Invalid credentials"}), 401
