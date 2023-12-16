@@ -1,26 +1,23 @@
 import React from "react"
 import "./style.css"
 import Navigation from "../Navigation";
+import Signup from "../Signup";
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   // Stpe: 7   calucate total of items
   const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price_product, 0)
-
   // prodcut qty total
+  //console.log(CartItem);
+
   return (
     <>
-
     <div><Navigation CartItem={CartItem}/> </div>
       <section className='cart-items'>
         <div className='container d_flex'>
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
           <div className='cart-order'>
           <h1>Order Now</h1>
-          <label>Name</label><br/>
-          <label>Email</label><br/>
-          <label>Tel</label><br/>
-          <label>Adresse</label><br/>
-          <button>Confirm Order </button>
+          <Signup CartItem={CartItem}/>
           <div className='cart-total product'>
             <h2>Cart Summary</h2>
             <div className=' d_flex'>

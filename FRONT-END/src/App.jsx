@@ -25,23 +25,23 @@ export default function App() {
   const [CartItem, setCartItem] = useState([])
 
   const addToCart = (product) => {
-    const productExit = CartItem.find((item) => item.id === product.id_Product)
+    const productExit = CartItem.find((item) => item.id_Product === product.id_Product)
 
     if (productExit) {
-      setCartItem(CartItem.map((item) => (item.id === product.id_Product ? { ...productExit, qty: productExit.qty + 1 } : item)))
+      setCartItem(CartItem.map((item) => (item.id_Product === product.id_Product ? { ...productExit, qty: productExit.qty + 1 } : item)))
     } else {
       setCartItem([...CartItem, { ...product, qty: 1 }])
     }
   }
 
   const decreaseQty = (product) => {
-    const productExit = CartItem.find((item) => item.id === product.id_Product)
+    const productExit = CartItem.find((item) => item.id_Product === product.id_Product)
 
     if (productExit.qty === 1) {
-      setCartItem(CartItem.filter((item) => item.id !== product.id_Product))
+      setCartItem(CartItem.filter((item) => item.id_Product !== product.id_Product))
     } else {
 
-      setCartItem(CartItem.map((item) => (item.id === product.id_Product ? { ...productExit, qty: productExit.qty - 1 } : item)))
+      setCartItem(CartItem.map((item) => (item.id_Product === product.id_Product ? { ...productExit, qty: productExit.qty - 1 } : item)))
     }
   }
   return (
