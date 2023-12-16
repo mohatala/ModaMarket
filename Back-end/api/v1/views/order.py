@@ -39,13 +39,18 @@ def order(order_id=None):
         val=(data["email"],data["last_name_User"])
         mycursor.execute("SELECT id_User FROM User where email=%s and last_name_User=%s",val)
         myresult = mycursor.fetchall()
-        print(int(myresult))
+        if myresult:
+          id_user = myresult["id_User"]  # Extract the value from the result
+          id_user_int = int(id_user)  # Convert to an integer if needed
+          #print("ID User:", id_user_int)
+        else:
+          print("User not found")
         for key in data.keys():
           #value = d[key]
           if len(key)<3:
             #print(data[key]["categorie"])
             sql = "INSERT INTO Orders (id_Product, id_User, qty) VALUES (%s,%s, %s)"
-            val = (int(data[key]["id_Product"]), v, int(data[key]["qty"]))
+            val = (int(data[key]["id_Product"]), id_user_int, int(data[key]["qty"]))
             mycursor.execute(sql, val)
             mydb.commit()
         return "ok", 201
