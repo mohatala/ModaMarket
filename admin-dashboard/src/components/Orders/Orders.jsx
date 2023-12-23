@@ -30,9 +30,9 @@ const makeStyle = (status) => {
 
 const Orders = () => {
   const [rows, setRows] = useState([
-    createData("Women's Plus Size Hooded Puffer Coat, Created for Macy's", 18908424, "2 oct 2023", "Approved", "UserA"),
-    createData("Women's Raglan-Sleeve Mock-Neck Sweatshirt", 18908424, "5 dec 2022", "Pending", "UserB"),
-    createData("Women's Long-Sleeve Faux-Wrap Midi Dress", 18908424, "20 jan 2022", "Delivered", "UserC"),
+    createData("Women's Plus Size Hooded Puffer Coat, Created for Macy's", 18908424, "2 oct 2023", "Approved", "Client 1"),
+    createData("Women's Raglan-Sleeve Mock-Neck Sweatshirt", 18908424, "5 dec 2022", "Pending", "Client 2"),
+    createData("Women's Long-Sleeve Faux-Wrap Midi Dress", 18908424, "20 jan 2022", "Delivered", "Client 3"),
   ]);
 
   const [selectedOrder, setSelectedOrder] = useState(null);

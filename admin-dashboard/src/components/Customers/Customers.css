@@ -6,6 +6,9 @@
 .Customers > h1{
 	margin-top: 3rem;
 }
+.Table{
+    overflow: scroll;
+}
 @media screen and (max-width: 1200px) {
     .Customers{
         justify-content:flex-start;
