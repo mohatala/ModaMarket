@@ -5,7 +5,7 @@
 **Project Type:** Clothing Marketplace
 
 **Tagline:** *The Clothes You’ll Ever Need*
-
+![alt text](https://github.com/mohatala/ModaMarket/blob/main/Screen1.PNG)
 ### Project Description
 
 Welcome to ModaMARKET, where style meets convenience. ModaMARKET is an ambitious project with the sole purpose of revolutionizing your shopping experience. As a dedicated Clothing Marketplace, our goal is to provide users with a seamless platform to discover, showcase, and acquire the latest and trendiest clothing items.
